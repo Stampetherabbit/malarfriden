@@ -1,10 +1,9 @@
 <!doctype html>
 <html lang="sv">
 <head>
+<meta charset="utf-8">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
-
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mälarfriden · Skyddat boende i Södermanland</title>
 <style>
@@ -23,7 +22,7 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--gräddvit);color:var(--svart);font-family:var(--sans);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
-h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.99;text-wrap:balance}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.99;text-wrap:balance;overflow-wrap:break-word}
 h1{font-size:clamp(44px,6.1vw,98px)}
 h2{font-size:clamp(36px,5.2vw,84px)}
 h3{font-size:clamp(20px,1.7vw,26px);letter-spacing:-.02em;line-height:1.15}
@@ -76,7 +75,7 @@ a{color:inherit}
   box-shadow:0 2px 4px rgba(20,23,21,.03),0 30px 60px -40px rgba(20,23,21,.25)}
 .platstal{font-size:clamp(60px,9.5vw,150px);font-weight:800;letter-spacing:-.05em;line-height:.92;font-variant-numeric:tabular-nums;margin-top:16px}
 .platstal em{font-style:normal;color:var(--skog)}
-.platsrutor{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:44px}
+.platsrutor{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:14px;margin-top:44px}
 .platsruta{background:var(--gräddvit);border-radius:18px;padding:24px 26px}
 .platsruta .n{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
 .platsruta .t{font-size:14.5px;color:var(--grå);margin-top:8px}
@@ -109,7 +108,7 @@ a{color:inherit}
   padding:clamp(40px,5.5vw,80px);box-shadow:0 40px 80px -48px rgba(22,69,51,.7)}
 .bredkort .ögonbryn{color:rgba(255,255,255,.6)}
 .bredkort h3{color:#fff;margin-top:14px;font-size:clamp(24px,2.6vw,38px)}
-.görrutor{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;margin-top:48px;
+.görrutor{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:1px;margin-top:48px;
   background:rgba(255,255,255,.14);border-radius:22px;overflow:hidden}
 .görruta{background:var(--skog);padding:30px 28px}
 .görruta .nr{font-size:12px;font-weight:800;letter-spacing:.14em;color:rgba(255,255,255,.5)}
@@ -117,7 +116,7 @@ a{color:inherit}
 .görruta p{font-size:15.5px;color:rgba(255,255,255,.76);line-height:1.55}
 
 /* ---- kompetenspanel ---- */
-.kompgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:44px}
+.kompgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:16px;margin-top:44px}
 .kompkort{background:var(--gräddvit);border-radius:20px;padding:28px}
 .kompkort .ögonbryn{font-size:11px}
 .kompkort p{margin-top:12px;font-size:16px;color:var(--grå)}
@@ -149,6 +148,15 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå-ljus);display:flex;fle
   .delad.vänd .bildkort{order:0}
   .hero{padding-top:110px}
 }
+@media(max-width:479px){
+  .navpill{gap:10px;padding:8px 8px 8px 14px}
+  .logotyp{font-size:16px;gap:9px}
+  .navcta{font-size:14px;padding:11px 16px}
+  .navcta .lang{display:none}
+  h2{font-size:clamp(28px,8.6vw,84px)}
+  .avslut{padding:clamp(30px,6.5vw,110px)}
+  .ögonbryn{letter-spacing:.12em}
+}
 :focus-visible{outline:2.5px solid var(--skog);outline-offset:3px;border-radius:8px}
 </style>
 </head>
@@ -156,7 +164,7 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå-ljus);display:flex;fle
 
 <div class="navrad">
   <nav class="navpill" aria-label="Huvudmeny">
-    <a class="logotyp" href="#topp"><span class="logomärke">M</span>Mälarfriden</a>
+    <a class="logotyp" href="#topp"><span class="logomärke">M</span><span class="ordmärke">Mälarfriden</span></a>
     <div class="navlänkar">
       <a href="#platser">Platser</a>
       <a href="#målgrupp">Målgrupp</a>
@@ -164,7 +172,7 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå-ljus);display:flex;fle
       <a href="#kompetens">Kompetens</a>
       <a href="#säkerhet">Säkerhet</a>
     </div>
-    <a class="navcta" href="tel:+46859859530"><span class="puls"></span>Ring dygnet runt</a>
+    <a class="navcta" href="tel:+46859859530"><span class="puls"></span>Ring<span class="lang">&nbsp;dygnet&nbsp;runt</span></a>
   </nav>
 </div>
 
@@ -263,7 +271,7 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå-ljus);display:flex;fle
       <div>
         <p class="ögonbryn">Säkerhet</p>
         <h2 style="margin-top:18px;max-width:13ch">Säkerheten i huset.</h2>
-        <p class="text" style="margin-top:24px"> Vi anger län, ingenting mer. Vad skyddet består av kan vi däremot beskriva.</p>
+        <p class="text" style="margin-top:24px">Vi anger län, ingenting mer. Vad skyddet består av kan vi däremot beskriva.</p>
         <div class="märken">
           <span>Polis- och Securitaslarm</span>
           <span>Kameraövervakning</span>
