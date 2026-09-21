@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Mälarfriden · Skyddat boende</title>
+<style>
+:root{
+  --gräddvit:#F2F0EB; --vit:#FFFFFF;
+  --svart:#141715; --grå:#666E6B; --grå-ljus:#9AA19D;
+  /* --grå mörkad från #6B7370 2026-09-18: gav 4,28:1 mot gräddvitt, under AA,
+     på 69 element. #666E6B ger 4,60 mot gräddvitt och 5,24 mot vitt. */
+  --skog:#1F5F45; --skog-mörk:#164533; --skog-ljus:#E7F0EA;
+  --linje:#E2DFD8;
+  --grå-grön:#5A6861;
+  --serif:'Instrument Serif','Iowan Old Style',Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --r:30px;
+  --pad:clamp(20px,4.5vw,72px);
+  --sekt:clamp(80px,10vw,150px);
+  --ease:cubic-bezier(.22,.68,.24,1);
+}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(data:font/woff2;base64,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) format('woff2')}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--gräddvit);color:var(--svart);font-family:var(--sans);font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.99;text-wrap:balance;overflow-wrap:break-word}
+h1{font-size:clamp(40px,5.6vw,90px)}
+h2{font-size:clamp(34px,5vw,80px)}
+h3{font-size:clamp(20px,1.7vw,26px);letter-spacing:-.02em;line-height:1.15}
+/* accent: sansen anger ämnet, Instrument Serif kursiv bär löftet */
+.lyft{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:1.04em;letter-spacing:-.005em;padding-right:.04em;color:var(--skog)}
+.avslut .lyft{color:#A9D9BE}
+@supports((-webkit-background-clip:text) or (background-clip:text)){
+  .avslut .lyft{background-image:linear-gradient(96deg,#8FCBAA 0%,#BFE6CF 55%,#E6F6EC 100%)}
+}
+@supports((-webkit-background-clip:text) or (background-clip:text)){
+  .lyft{background-image:linear-gradient(96deg,var(--skog) 0%,#2E8A62 44%,#55B98B 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+}
+@media print{.lyft{background:none!important;color:var(--skog)!important;-webkit-text-fill-color:currentColor!important}}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:var(--pad)}
+.ögonbryn{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--skog)}
+.text{color:var(--grå);font-size:17.5px;line-height:1.62;max-width:46ch}
+.text-c{margin-inline:auto;text-align:center}
+
+/* ---- flytande pill-nav ---- */
+.navrad{position:fixed;top:14px;left:0;right:0;z-index:80;display:flex;justify-content:center;padding-inline:var(--pad);pointer-events:none}
+.navpill{pointer-events:auto;width:100%;max-width:1360px;display:flex;align-items:center;gap:18px;
+  background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(18px);
+  border:1px solid rgba(255,255,255,.7);border-radius:100px;
+  box-shadow:0 1px 2px rgba(20,23,21,.05),0 14px 34px -18px rgba(20,23,21,.22);
+  padding:9px 9px 9px 20px}
+.logotyp{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.logomärke{width:30px;height:30px;border-radius:9px;background:var(--skog);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800}
+.navlänkar{display:flex;gap:24px;margin-left:auto;font-size:15px;font-weight:500;color:var(--grå)}
+.navlänkar a{text-decoration:none;transition:color .2s var(--ease)}
+.navlänkar a:hover{color:var(--svart)}
+.navcta{display:inline-flex;align-items:center;gap:9px;background:var(--skog);color:#fff;text-decoration:none;
+  font-size:15px;font-weight:700;padding:12px 22px;border-radius:100px;white-space:nowrap;
+  transition:background .22s var(--ease),transform .22s var(--ease)}
+.navcta:hover{background:var(--skog-mörk);transform:translateY(-1px)}
+.puls{width:7px;height:7px;border-radius:50%;background:#7FD98F;flex:none;
+  box-shadow:0 0 0 3px rgba(127,217,143,.3);animation:pulsa 1.9s var(--ease) infinite}
+@keyframes pulsa{0%,100%{transform:scale(1);box-shadow:0 0 0 3px rgba(127,217,143,.3)}
+  50%{transform:scale(1.22);box-shadow:0 0 0 6px rgba(127,217,143,.14)}}
+@media (prefers-reduced-motion:reduce){.puls{animation:none}}
+@media(max-width:1100px){.navlänkar{display:none}}
+
+/* ---- hero: helbrett medieband, texten ovanpå bildens vänstra del ----
+   Bilden ligger som grundlager och videon ovanpå. Saknas mp4:en målar video-elementet
+   ingenting, och bilden syns igenom. Skärmen är en vågrät gradient som mörkar vänsterkanten
+   så vit text är läsbar oavsett vad som råkar ligga i bilden där. */
+.heromedia{position:relative;background:var(--skog-mörk);overflow:hidden;
+  min-height:clamp(500px,74vh,780px);display:flex;align-items:center}
+.heromedia>img,.heromedia>video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:52% 56%;margin:0}
+.heromedia>video{z-index:1;background:transparent}
+.heroskärm{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(100deg,
+    rgba(12,20,16,.88) 0%,
+    rgba(12,20,16,.78) 30%,
+    rgba(12,20,16,.44) 54%,
+    rgba(12,20,16,.06) 76%,
+    rgba(12,20,16,0) 100%)}
+.heroinnehåll{position:relative;z-index:3;width:100%;color:#fff;
+  padding-block:clamp(112px,15vh,180px) clamp(48px,7vh,84px)}
+.heroblock{max-width:620px}
+.heroinnehåll .ögonbryn{color:rgba(255,255,255,.80)}
+.heroinnehåll h1{margin-top:20px;max-width:none;color:#fff}
+.heroinnehåll h1 .rad{display:block;white-space:nowrap}
+.heroinnehåll h1 span{display:block;color:#F7E6CC}
+.heroinnehåll .lyft{color:#F7E6CC}
+@supports((-webkit-background-clip:text) or (background-clip:text)){
+  .heroinnehåll .lyft{background-image:linear-gradient(96deg,#F2D9B4 0%,#FAECD6 54%,#FFF8EC 100%)}
+}
+.heroinnehåll .text{color:rgba(255,255,255,.88);margin-top:22px;max-width:42ch}
+.heroinnehåll .tel-not{color:rgba(255,255,255,.74)}
+.heroinnehåll .tel{background:var(--skog);color:#fff}
+.heroinnehåll .tel:hover{background:var(--skog-mörk);color:#fff}
+/* smalt: bilden beskärs hårt vågrätt, så skärmen blir lodrät och texten lägger sig nedtill */
+@media(max-width:860px){
+  .heromedia{align-items:flex-end;min-height:clamp(560px,86vh,760px)}
+  .heromedia>img,.heromedia>video{object-position:40% 54%} /* paret ligger på 35-57% av bredden; 64% kapade bort barnet */
+  .heroskärm{background:linear-gradient(to top,
+    rgba(12,20,16,.92) 0%,
+    rgba(12,20,16,.80) 34%,
+    rgba(12,20,16,.44) 62%,
+    rgba(12,20,16,.18) 100%)}
+  .heroinnehåll{padding-block:clamp(120px,18vh,200px) clamp(36px,6vh,56px)}
+}
+/* faktaremsan under heron */
+.faktaremsa{background:var(--vit);border-bottom:1px solid var(--linje);overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.karusell{display:flex;width:max-content;padding-block:22px;animation:rulla 44s linear infinite}
+.faktaremsa:hover .karusell{animation-play-state:paused}
+.karusell ul{display:flex;align-items:center;gap:0;margin:0;padding:0 0 0 40px;list-style:none}
+.karusell li{display:flex;align-items:center;white-space:nowrap;font-size:15px;color:var(--grå)}
+.karusell li::after{content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--skog-ljus);margin-inline:40px;flex:none}
+.karusell b{color:var(--svart);font-weight:700}
+@keyframes rulla{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .karusell{animation:none;width:100%;overflow-x:auto}
+  .karusell ul:last-child{display:none}
+}
+.faktaremsa .wrap{display:flex;flex-wrap:wrap;gap:12px 40px;padding-block:22px;
+  font-size:14.5px;color:var(--grå-ljus)}
+.faktaremsa b{color:var(--svart);font-weight:700}
+.knapprad{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:30px}
+.tel{display:inline-flex;align-items:center;gap:12px;background:var(--skog);color:#fff;text-decoration:none;
+  font-size:clamp(21px,2vw,27px);font-weight:800;letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:tabular-nums;
+  padding:17px 30px;border-radius:100px;transition:background .22s var(--ease),transform .22s var(--ease),box-shadow .22s var(--ease)}
+.tel:hover{background:var(--skog-mörk);transform:translateY(-2px);box-shadow:0 18px 34px -18px rgba(22,69,51,.6)}
+.tel-not{font-size:15px;color:var(--grå);display:flex;align-items:center;gap:8px}
+.tillståndsrad{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:34px;padding-top:24px;border-top:1px solid var(--linje);
+  font-size:14px;color:var(--grå-ljus)}
+.tillståndsrad b{color:var(--grå);font-weight:700}
+
+/* ---- paneler och faktarutor ---- */
+.panel{background:var(--vit);border-radius:var(--r);padding:clamp(38px,5vw,72px);
+  box-shadow:0 2px 4px rgba(20,23,21,.03),0 30px 60px -40px rgba(20,23,21,.25)}
+.faktarutor{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(128px,100%),1fr));gap:14px;margin-top:36px}
+.faktaruta{background:var(--gräddvit);border-radius:18px;padding:22px 24px}
+.faktaruta .n{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.faktaruta .t{font-size:14.5px;color:var(--grå);margin-top:8px}
+
+/* ---- delad sektion: bildkort + text ---- */
+.delad{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(28px,5vw,80px);align-items:center}
+.delad.vänd{grid-template-columns:.98fr 1.02fr}
+.delad.vänd .bildkort{order:2}
+.bildkort{border-radius:var(--r);overflow:hidden;background:var(--skog-ljus);aspect-ratio:4/3.2;
+  display:grid;place-items:center;padding:34px;
+  box-shadow:0 2px 4px rgba(20,23,21,.04),0 36px 64px -42px rgba(20,23,21,.32)}
+.bildkort img{width:100%;height:100%;object-fit:cover;border-radius:0}
+.bildkort.foto{padding:0}
+.platshållare{text-align:center;font-size:15px;color:var(--skog);max-width:30ch;line-height:1.6}
+.platshållare b{display:block;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+
+/* ---- bocklista ---- */
+.bockar{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:13px}
+.bockar li{display:flex;gap:13px;align-items:flex-start;font-size:16.5px;color:var(--grå)}
+.bock{flex:none;width:22px;height:22px;border-radius:50%;background:var(--skog-ljus);color:var(--skog);
+  display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:2px}
+.bockar li b{color:var(--svart);font-weight:700}
+
+/* ---- centrerad sektion ---- */
+.mitt{text-align:center}
+.mitt h2{max-width:19ch;margin-inline:auto}
+.mitt .text{margin-top:24px}
+.citat{font-size:clamp(26px,3.4vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.06;max-width:26ch;margin:18px auto 0;text-wrap:balance}
+.citat i{font-style:normal;color:var(--skog)}
+
+/* ---- kompetenspanel ---- */
+.kompgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:16px;margin-top:40px}
+.kompkort{background:var(--gräddvit);border-radius:20px;padding:28px}
+.kompkort .ögonbryn{font-size:11px}
+.kompkort p{margin-top:12px;font-size:16px;color:var(--grå)}
+.kompkort b{color:var(--svart);font-weight:700}
+.språkblock{margin-top:18px;background:var(--skog-ljus);border-radius:20px;padding:30px clamp(24px,3vw,34px)}
+.språktal{font-size:clamp(30px,4vw,54px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--skog)}
+.märken{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.märken span{background:var(--vit);border:1px solid var(--linje);border-radius:100px;padding:10px 18px;font-size:15px;color:var(--grå)}
+
+/* ---- säkerhet: tre lager, inte en punktlista ---- */
+
+/* ---- vårt mål ---- */
+.målrutor{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px;margin-top:44px;text-align:left}
+.målruta{background:var(--vit);border-radius:22px;padding:30px 28px;border:1px solid var(--linje)}
+.målruta .nr{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--skog)}
+.målruta p{margin-top:12px;font-size:16px;color:var(--grå);line-height:1.55}
+.målavslut{margin:44px auto 0;max-width:40ch;font-size:clamp(19px,1.9vw,24px);font-weight:700;letter-spacing:-.02em;line-height:1.3;text-wrap:balance}
+
+/* ---- avslut ---- */
+.avslut{background:var(--skog-mörk);color:#fff;border-radius:var(--r);padding:clamp(48px,6.5vw,110px);text-align:center;
+  margin-bottom:var(--sekt);box-shadow:0 40px 90px -50px rgba(22,69,51,.8)}
+.avslut h2{max-width:16ch;margin:16px auto 0}
+.avslut .ögonbryn{color:#A9D9BE}
+.avslut .text{color:rgba(255,255,255,.76);margin:24px auto 0;text-align:center;max-width:52ch;letter-spacing:.002em}
+.avslut .tel{margin-top:32px;background:#33A06F;color:#fff}
+.avslut .tel:hover{background:#3DB57E;color:var(--skog-mörk)}
+.avslut .mejl{color:rgba(255,255,255,.66)}
+.avslut .mejl a{color:#A9D9BE;text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;text-decoration-color:rgba(169,217,190,.5)}
+.avslut .mejl a:hover{text-decoration-color:#A9D9BE}
+.avslut .mejl{margin-top:22px;font-size:16px;color:rgba(255,255,255,.72)}
+.avslut .mejl a{color:#6FE0A6}
+footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2,32:1 mot gräddvitt, oläsbar för en juridisk uppgift */display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
+
+/* ---- motion ---- */
+.rev{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.rev.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media(max-width:920px){
+  .hero-rutnät,.delad,.delad.vänd{grid-template-columns:1fr}
+  .delad.vänd .bildkort{order:0}
+  .heromärke{top:78px}
+}
+@media(max-width:479px){
+  .navpill{gap:10px;padding:8px 6px 8px 14px}
+  .navcta{margin-left:auto}
+  .logotyp{font-size:16px;gap:9px}
+  .navcta{font-size:14px;padding:11px 16px}
+  .navcta .lang{display:none}
+  h2{font-size:clamp(28px,8.6vw,80px)}
+  .avslut{padding:clamp(30px,6.5vw,110px)}
+  .ögonbryn{letter-spacing:.12em}
+  .heropanel{margin-top:-20px}
+}
+:focus-visible{outline:2.5px solid var(--skog);outline-offset:3px;border-radius:8px}
+
+/* ═══ SEKTION A · VÅRT STÖD — registret ════════════════════════════════
+   Ersätter .bredkort / .görrutor / .görruta, som kan raderas ur v16.
+   Avdelare är ALLTID border på barnen, aldrig en genomskinlig gap-bakgrund:
+   en grout-bakgrund under 1px gap komponeras mot sidbottnen och blir ljus
+   grout mellan gröna fält (= kakel). Ändra inte till gap.
+   ══════════════════════════════════════════════════════════════════════ */
+.rg-panel{margin-top:clamp(40px,5vw,68px);background:var(--skog);color:#fff;border-radius:var(--r);
+  padding:clamp(26px,4.2vw,56px);text-align:left;box-shadow:0 40px 80px -48px rgba(22,69,51,.7)}
+.rg-rutnät{display:grid;grid-template-columns:minmax(0,1fr);margin:0}
+.rg-fält{min-width:0;display:flex;flex-direction:column}
+.rg-fält dt{margin:0;font-size:clamp(19px,1.5vw,22px);font-weight:800;letter-spacing:-.025em;
+  line-height:1.12;color:#fff;text-wrap:pretty}
+/* kvalificeraren är medvetet gemen och otrackad — den ska inte läsas som ett ögonbryn.
+   .78 är uppmätt till 5,32:1 mot --skog i Chrome. Sänk inte alfat. */
+.rg-kval{display:block;margin-top:6px;font-size:14px;font-weight:500;letter-spacing:0;
+  line-height:1.35;text-transform:none;color:rgba(255,255,255,.78)}
+.rg-fält dd{margin:0;display:flex;flex-direction:column;flex:1 1 auto}
+.rg-rader{list-style:none;margin:15px 0 0;padding:0}
+.rg-rader li{border-top:1px solid rgba(255,255,255,.12);padding:9px 0 8px;
+  font-size:15.5px;line-height:1.42;color:rgba(255,255,255,.80)}
+.rg-rader li:last-child{padding-bottom:0}
+
+/* 320–767: en spalt, fälten avdelade av hårlinjer */
+.rg-fält+.rg-fält{border-top:1px solid rgba(255,255,255,.2);margin-top:26px;padding-top:26px}
+@media(max-width:360px){
+  .rg-panel{padding:24px 20px;border-radius:24px}
+  .rg-rader li{font-size:15px}
+}
+
+/* OBS: kantlinjerna i de två blocken nedan är hårdkodade mot EXAKT fem fält i
+   ordningen 3+2. Läggs ett sjätte fält till, eller stryks ett, blir rutnätets
+   linjer fel utan att något går sönder synligt. Skriv då om nth-child-reglerna. */
+
+/* 768–1059: två spalter, femte fältet över hela bredden */
+@media(min-width:768px) and (max-width:1059.98px){
+  .rg-rutnät{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rg-fält{padding-inline:clamp(20px,3vw,32px)}
+  .rg-fält+.rg-fält{border-top:0;margin-top:0;padding-top:0}
+  .rg-fält:nth-child(5){grid-column:span 2}
+  .rg-fält:nth-child(2n){border-left:1px solid rgba(255,255,255,.2);padding-right:0}
+  .rg-fält:nth-child(2n+1){padding-left:0}
+  .rg-fält:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2);margin-top:30px;padding-top:30px}
+  .rg-fält:nth-child(5){padding-inline:0}
+  .rg-fält:nth-child(5) .rg-rader{max-width:56ch}
+  /* bottenlåsning, bara på understa raden: där bor ojämnheten (1 rad mot 3).
+     Översta raden står kvar toppställd — bottenlåsning där skulle flytta hålet
+     från en kant till mitten av två fält i stället för att ta bort det. */
+  .rg-fält:nth-child(n+4) .rg-rader{margin-top:auto;padding-top:15px}
+}
+
+/* 1060+: 3+2 på ett sexspaltsraster */
+@media(min-width:1060px){
+  .rg-rutnät{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .rg-fält{padding-inline:clamp(22px,2.4vw,36px)}
+  .rg-fält+.rg-fält{border-top:0;margin-top:0;padding-top:0}
+  .rg-fält:nth-child(-n+3){grid-column:span 2}
+  .rg-fält:nth-child(n+4){grid-column:span 3}
+  .rg-fält:nth-child(2),.rg-fält:nth-child(3),.rg-fält:nth-child(5){
+    border-left:1px solid rgba(255,255,255,.2)}
+  .rg-fält:nth-child(1),.rg-fält:nth-child(4){padding-left:0}
+  .rg-fält:nth-child(3),.rg-fält:nth-child(5){padding-right:0}
+  .rg-fält:nth-child(n+4){border-top:1px solid rgba(255,255,255,.2);
+    margin-top:clamp(32px,3vw,46px);padding-top:clamp(32px,3vw,46px)}
+  .rg-fält:nth-child(n+4) .rg-rader{max-width:46ch;margin-top:auto;padding-top:15px}
+}
+
+/* 1440+: samma struktur, mer luft och ett hack större typ */
+@media(min-width:1440px){
+  .rg-panel{padding:64px 68px}
+  .rg-fält dt{font-size:23px}
+  .rg-rader li{font-size:16px;padding:10px 0 9px}
+}
+
+/* ═══ SEKTION B · SKYDDET LIGGER I TRE LAGER — samma register, vitt ════
+   Ersätter .lagergrid / .lager / .lagerikon / .lagertext / .lagerlista,
+   som kan raderas ur v16 tillsammans med de tre inline-SVG:erna.
+   Tre band, inga kort: ojämna listlängder (4/3/2) kan inte bryta någon
+   kortkant när banden ligger under varandra i full bredd.
+   ══════════════════════════════════════════════════════════════════════ */
+.lg-tavla{margin-top:clamp(40px,5vw,64px);background:var(--vit);border-radius:var(--r);
+  padding:clamp(26px,4.2vw,60px);text-align:left;
+  box-shadow:0 2px 4px rgba(20,23,21,.03),0 30px 60px -40px rgba(20,23,21,.25)}
+.lg-lager+.lg-lager{border-top:1px solid var(--linje);
+  margin-top:clamp(28px,3.4vw,44px);padding-top:clamp(28px,3.4vw,44px)}
+/* pretty, inte balance: h3 bär en inbakad .lg-kval-mening, och global
+   text-wrap:balance på h3 skulle balansera rubrik och kvalificerare som en enhet. */
+.lg-lager h3{font-size:clamp(22px,2.2vw,30px);letter-spacing:-.03em;line-height:1.08;text-wrap:pretty}
+/* kvalificeraren bär den sanna utsagan om bemanningen — gemen, otrackad, inget ögonbryn */
+.lg-kval{display:block;margin-top:9px;font-size:16px;font-weight:500;letter-spacing:0;
+  line-height:1.4;text-transform:none;color:var(--grå)}
+
+.lg-fakta{margin:20px 0 0}
+.lg-rad{border-top:1px solid var(--linje);padding:11px 0 10px;
+  display:grid;grid-template-columns:minmax(0,1fr);gap:2px 0}
+.lg-rad dt{margin:0;font-size:14px;font-weight:600;line-height:1.45;color:var(--grå-grön)}
+.lg-rad dd{margin:0;font-size:16px;line-height:1.45;color:var(--grå)}
+/* de tal socialsekreteraren letar efter ska lyfta ur brödtexten.
+   nowrap är säkert bara på korta tal — märk aldrig en hel mening med .lg-tal. */
+.lg-tal{color:var(--svart);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* 320: allt staplat, etikett över påstående inuti raden */
+@media(max-width:360px){
+  .lg-tavla{padding:24px 20px;border-radius:24px}
+  .lg-lager h3{font-size:21px}
+}
+/* 560: raden blir etikett vänster / fakta höger */
+@media(min-width:560px){
+  .lg-rad{grid-template-columns:minmax(118px,auto) minmax(0,1fr);
+    gap:0 clamp(16px,2vw,28px);align-items:baseline}
+}
+/* 768: bandet delas i namn-spalt och fakta-spalt */
+@media(min-width:768px){
+  .lg-lager{display:grid;grid-template-columns:minmax(210px,.85fr) minmax(0,1.9fr);
+    gap:clamp(24px,3.4vw,56px);align-items:start}
+  .lg-fakta{margin-top:0}
+}
+/* 1060: lodrät hårlinje mellan spalterna, registret blir explicit */
+@media(min-width:1060px){
+  .lg-lager{grid-template-columns:minmax(230px,.8fr) minmax(0,2fr);gap:0 clamp(28px,3.4vw,56px)}
+  .lg-fakta{border-left:1px solid var(--linje);padding-left:clamp(28px,3vw,48px)}
+}
+/* 1440+ */
+@media(min-width:1440px){
+  .lg-tavla{padding:68px 72px}
+  .lg-rad dd{font-size:17px}
+}
+</style>
+<noscript><style>.rev{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<div class="navrad">
+  <nav class="navpill" aria-label="Huvudmeny">
+    <a class="logotyp" href="#topp"><span class="logomärke">M</span><span class="ordmärke">Mälarfriden</span></a>
+    <div class="navlänkar">
+      <a href="#målgrupp">Målgrupp</a>
+      <a href="#stöd">Vårt stöd</a>
+      <a href="#boendemiljö">Boendemiljö</a>
+      <a href="#kompetens">Kompetens</a>
+      <a href="#säkerhet">Säkerhet</a>
+    </div>
+    <a class="navcta" href="tel:+46859859530"><span class="puls"></span>Ring<span class="lang">&nbsp;dygnet&nbsp;runt</span></a>
+  </nav>
+</div>
+
+<main id="topp">
+
+  <section class="heromedia">
+    <!-- Stillbilden är grundlager OCH fallback. Videon ligger ovanpå; saknas eller stoppas
+         mp4:en målar video-elementet ingenting och bilden syns igenom. Scriptet längst ned
+         plockar bort videon helt vid prefers-reduced-motion. -->
+    <img src="bilder/hero-mor-dotter-hand.webp" alt="Stämningsbild: en kvinna och ett barn går hand i hand på en grusväg genom ett höstlandskap, sedda bakifrån.">
+    <div class="heroskärm"></div>
+    <div class="heroinnehåll">
+      <div class="wrap">
+        <div class="heroblock">
+          <p class="ögonbryn">Södermanlands län · placeringar i hela landet</p>
+          <h1><span class="rad">Skyddat boende</span><span class="lyft">sedan 2014.</span></h1>
+          <p class="text">Vi tar emot kvinnor och mammor med medföljande barn som är utsatta för våld i nära relationer eller hedersrelaterat våld och förtryck.</p>
+          <div class="knapprad">
+            <a class="tel" href="tel:+46859859530"><span class="puls"></span>08&#8209;59&nbsp;85&nbsp;95&nbsp;30</a>
+            <span class="tel-not">Vi svarar dygnet runt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faktaremsa" aria-label="Kort om Mälarfriden">
+    <div class="karusell">
+      <ul><li><b>IVO-tillstånd</b>&nbsp;för skyddat boende</li><li><b>Placeringar</b>&nbsp;från socialtjänst och polis i hela landet</li><li><b>Nio språk</b>&nbsp;i arbetsteamet</li><li><b>Medföljande husdjur</b>&nbsp;välkomna</li><li><b>Jour</b>&nbsp;hela kvällen och natten</li><li><b>Enskilt sovrum</b>&nbsp;för varje familj</li><li><b>Hämtning</b>&nbsp;planeras flexibelt efter avstånd</li></ul>
+      <ul aria-hidden="true"><li><b>IVO-tillstånd</b>&nbsp;för skyddat boende</li><li><b>Placeringar</b>&nbsp;från socialtjänst och polis i hela landet</li><li><b>Nio språk</b>&nbsp;i arbetsteamet</li><li><b>Medföljande husdjur</b>&nbsp;välkomna</li><li><b>Jour</b>&nbsp;hela kvällen och natten</li><li><b>Enskilt sovrum</b>&nbsp;för varje familj</li><li><b>Hämtning</b>&nbsp;planeras flexibelt efter avstånd</li></ul>
+    </div>
+  </section>
+
+  <section class="rev" id="målgrupp" style="padding-top:var(--sekt);padding-bottom:var(--sekt)">
+    <div class="wrap delad">
+      <div class="bildkort foto"><img src="bilder/malgrupp-grind.webp" alt="Stämningsbild: en öppen vit grind och en grusgång genom en rosenträdgård en mulen sommardag, med sjön i bakgrunden."></div>
+      <div>
+        <p class="ögonbryn">Målgrupp</p>
+        <h2 style="margin-top:18px">Vilka vi <em class="lyft">tar emot</em>.</h2>
+        <p class="text" style="margin-top:24px">Mälarfriden grundades 2014 och är ett skyddat boende för kvinnor och mammor med barn som behöver skydd, stöd och en trygg plats efter våld eller hot i nära relationer.</p>
+        <ul class="bockar">
+          <li><span class="bock">✓</span><span><b>Hedersrelaterat våld och förtryck.</b> Gedigen erfarenhet, med individuellt anpassat stöd till kvinnor i dessa situationer.</span></li>
+          <li><span class="bock">✓</span><span><b>Placeringar i hela landet</b> från socialtjänster och polis.</span></li>
+          <li><span class="bock">✓</span><span><b>Medföljande husdjur är självklart välkomna.</b> Stall med hagar och hundgård finns på gården.</span></li>
+          <li><span class="bock">✓</span><span><b>Enskilt sovrum</b> i kollektivt boende med gemensamma utrymmen.</span></li>
+          <li><span class="bock">✓</span><span><b>Större familjer</b> kan få den övre våningen anpassad till en separat lägenhet med egen ingång.</span></li>
+          <li><span class="bock">✓</span><span>Vi tar <b>inte</b> emot personer med aktivt missbruk.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev mitt" id="stöd" style="padding-bottom:var(--sekt)">
+    <div class="wrap">
+      <p class="ögonbryn">Vårt stöd</p>
+      <p class="citat">”När vårdplanerna kommer har vi <i>ofta gjort det mesta</i>”</p>
+      <p class="text text-c" style="margin-top:26px">Vi samordnar hela skyddsprocessen, så att handläggningen hos er blir kortare och tryggare.</p>
+
+      <div class="rg-panel">
+        <dl class="rg-rutnät">
+
+          <div class="rg-fält">
+            <dt>Skyddsprocessen<span class="rg-kval">vi samordnar den</span></dt>
+            <dd>
+              <ul class="rg-rader">
+                <li>Riskbedömningar</li>
+                <li>Hotanalyser</li>
+                <li>Polisanmälningar</li>
+                <li>Ansökningar om skyddade personuppgifter</li>
+                <li>Säkra transporter till myndigheter, möten och skolor</li>
+              </ul>
+            </dd>
+          </div>
+
+          <div class="rg-fält">
+            <dt>Myndigheter<span class="rg-kval">stöd i kontakterna med</span></dt>
+            <dd>
+              <ul class="rg-rader">
+                <li>Socialtjänst och andra myndigheter</li>
+                <li>Hälso- och sjukvård</li>
+                <li>Skola och förskola</li>
+              </ul>
+            </dd>
+          </div>
+
+          <div class="rg-fält">
+            <dt>Juridik<span class="rg-kval">advokatbyråer som gör hembesök, för allas säkerhet och trygghet</span></dt>
+            <dd>
+              <ul class="rg-rader">
+                <li>Familjerätt</li>
+                <li>Brottmål</li>
+                <li>Migrationsrätt</li>
+              </ul>
+            </dd>
+          </div>
+
+          <div class="rg-fält">
+            <dt>Eget boende<span class="rg-kval">nära samarbete med hyresvärdar</span></dt>
+            <dd>
+              <ul class="rg-rader">
+                <li>Goda möjligheter att ordna trygga bostadslösningar för kvinnor och familjer</li>
+              </ul>
+            </dd>
+          </div>
+
+          <div class="rg-fält">
+            <dt>Skola och studier<span class="rg-kval">kontakter i kommunen</span></dt>
+            <dd>
+              <ul class="rg-rader">
+                <li>Skolor och förskolor i kommunen, platser kan ordnas vid behov</li>
+                <li>Samarbete med SFI och Komvux</li>
+                <li>Stöd i språkundervisning och vidare studier</li>
+              </ul>
+            </dd>
+          </div>
+
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev" id="boendemiljö" style="padding-bottom:var(--sekt)">
+    <div class="wrap">
+      <div class="panel">
+        <p class="ögonbryn">Boendemiljö</p>
+        <h2 style="margin-top:18px;max-width:20ch">Huset och <em class="lyft">gården</em>.</h2>
+        <p class="text" style="margin-top:22px">Mälarfriden består av ett tvåvåningshus med en avkopplande relaxavdelning med bastu. TV och internet finns tillgängligt i boendet.</p>
+        <div class="faktarutor">
+          <div class="faktaruta"><div class="n">7</div><div class="t">sovrum</div></div>
+          <div class="faktaruta"><div class="n">2</div><div class="t">stora kök</div></div>
+          <div class="faktaruta"><div class="n">2</div><div class="t">vardagsrum</div></div>
+          <div class="faktaruta"><div class="n">3</div><div class="t">badrum</div></div>
+        </div>
+      </div>
+      <div class="delad vänd" style="margin-top:clamp(28px,4vw,56px)">
+        <div class="bildkort foto"><img src="bilder/husdjur-hund-katt.webp" alt="Stämningsbild: en katt och en hund vilar tillsammans på en trätrall i en trädgård med lavendel."></div>
+        <div>
+          <h3>Omgivningen</h3>
+          <p class="text" style="margin-top:16px">Mälarfriden är omgivet av fridfull natur och erbjuder en mängd möjligheter till rekreation och återhämtning.</p>
+          <ul class="bockar">
+            <li><span class="bock">✓</span><span>Skogspromenader, trädgårdsskötsel samt svamp- och bärplockning.</span></li>
+            <li><span class="bock">✓</span><span><b>Stor lekplats på gården</b> med sandlåda, gungor, klätterställning och studsmatta.</span></li>
+            <li><span class="bock">✓</span><span><b>Litet stall med hagar och en rymlig hundgård</b>, så att placeringar där husdjur följer med går att ta emot.</span></li>
+            <li><span class="bock">✓</span><span>Regelbundna utflykter och aktiviteter, planerade tillsammans med de boende.</span></li>
+            <li><span class="bock">✓</span><span>Samarbete med ett <b>närliggande gym</b>, där alla som vill får möjlighet att träna.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev" id="kompetens" style="padding-bottom:var(--sekt)">
+    <div class="wrap">
+      <div class="panel">
+        <p class="ögonbryn">Kompetens</p>
+        <h2 style="margin-top:18px;max-width:18ch">Kompetensen i vårt <em class="lyft">arbetsteam</em>.</h2>
+        <p class="text" style="margin-top:22px">Föreståndaren har formell behörighet enligt tillståndet. Kompetensen redovisas som titlar, inte som personer.</p>
+        <div class="kompgrid">
+          <div class="kompkort"><p class="ögonbryn">Utbildningar</p><p><b>Socionomer, leg. hälso- och sjukvårdskurator och specialistsjuksköterska inom psykiatrin.</b> Lärare för grundskola och gymnasieskola, KBT-psykoterapi, MI-samtal, undersköterska och lärarassistent.</p></div>
+          <div class="kompkort"><p class="ögonbryn">Riskbedömning</p><p><b>FREDA-beskrivning, SARA och PATRIARK.</b> SARA för våld i nära relationer, PATRIARK för hedersrelaterat våld.</p></div>
+          <div class="kompkort"><p class="ögonbryn">Stöd under placeringen</p><p><b>Stöd- och säkerhetssamtal</b> och individuell säkerhetsplanering. Kris- och återhämtningsstöd samt individuellt anpassat stöd i föräldraskapet.</p></div>
+          <div class="kompkort"><p class="ögonbryn">Stöd för barnen</p><p><b>BBIC, Barns behov i centrum.</b> Samtal med barn som bevittnat våld, och Trappan-samtal.</p></div>
+        </div>
+        <div class="språkblock">
+          <p class="ögonbryn">Språk i huset</p>
+          <p class="språktal">Nio språk</p>
+          <div class="märken">
+            <span>Svenska</span><span>Engelska</span><span>Finska</span><span>Polska</span><span>Grekiska</span><span>Arabiska</span><span>Kinesiska</span><span>Pashto</span><span>Urdu</span>
+          </div>
+          <p class="text" style="margin-top:20px">Tolk bokas alltid vid behov.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev mitt" id="säkerhet" style="padding-bottom:var(--sekt)">
+    <div class="wrap">
+      <p class="ögonbryn">Säkerhet och trygghet</p>
+      <h2 style="margin-top:18px">Skyddet ligger i <em class="lyft">tre lager</em>.</h2>
+      <p class="text text-c">Skyddet är ordnat i tre lager: bemanningen, huset och personen.</p>
+
+      <div class="lg-tavla">
+
+        <div class="lg-lager">
+          <h3>Bemanningen<span class="lg-kval">Dag på plats, natt i jour.</span></h3>
+          <dl class="lg-fakta">
+            <div class="lg-rad">
+              <dt>Dagtid</dt>
+              <dd>Personal på plats i huset varje dag <span class="lg-tal">08.00–17.00</span>.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Kväll och natt</dt>
+              <dd>Jourpersonal hela kvällen och natten, i direkt anslutning till boendet.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Ny placering</dt>
+              <dd>Rutinen är sovande personal på plats de första <span class="lg-tal">två till tre</span> nätterna. Därefter gäller ordinarie jour i direkt anslutning till boendet.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Inställelsetid</dt>
+              <dd>Övrig personal har en inställelsetid på cirka <span class="lg-tal">15 minuter</span>.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="lg-lager">
+          <h3>Huset<span class="lg-kval">Larm och avtal som gäller lokalerna, oavsett vem som är i tjänst.</span></h3>
+          <dl class="lg-fakta">
+            <div class="lg-rad">
+              <dt>Larm</dt>
+              <dd>Polis- och Securitaslarm installerat i lokalerna.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Kamera</dt>
+              <dd>Kameraövervakning.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Brand</dt>
+              <dd>Brandskyddsavtal.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="lg-lager">
+          <h3>Personen<span class="lg-kval">Skydd som följer med individen, inne som ute.</span></h3>
+          <dl class="lg-fakta">
+            <div class="lg-rad">
+              <dt>Personlarm</dt>
+              <dd>Bärbara överfallslarm för personal och boende.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Ute och transport</dt>
+              <dd>GPS-larm vid utevistelser och transporter.</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="rev mitt" id="mål" style="padding-bottom:var(--sekt)">
+    <div class="wrap">
+      <p class="ögonbryn">Vårt mål</p>
+      <h2 style="margin-top:18px">En väg vidare mot ett <em class="lyft">självständigt liv</em>.</h2>
+      <p class="text text-c">Verksamheten har en pedagogisk och praktisk inriktning som ger varje individ stöd i att skapa struktur, självständighet och trygghet i vardagen. Målet är att varje kvinna och familj ska kunna bygga upp ett stabilt och fungerande liv med fokus på trygghet, delaktighet och självbestämmande.</p>
+      <div class="målrutor">
+        <div class="målruta"><div class="nr">01</div><p>Motivera och vägleda i arbetssökandet eller studier, för att uppnå självförsörjning.</p></div>
+        <div class="målruta"><div class="nr">02</div><p>Stötta varje enskild person i förberedelserna inför övergången till ett eget boende.</p></div>
+        <div class="målruta"><div class="nr">03</div><p>Säkerställa att barnen under sin vistelse hos oss får en trygg och lugn miljö, och att deras individuella behov tillgodoses.</p></div>
+      </div>
+      <p class="målavslut">Vår målsättning är att ge varje kvinna och barn möjlighet till ett bra liv präglat av trygghet, självständighet och god livskvalitet.</p>
+    </div>
+  </section>
+
+  <section class="rev">
+    <div class="wrap">
+      <div class="avslut">
+        <p class="ögonbryn">Placeringsförfrågan</p>
+        <h2>Ring oss. Vi svarar <em class="lyft">dygnet runt</em>.</h2>
+        <p class="text">Mälarfriden finns i Södermanlands län, i en trygg och avskild miljö. Hämtning av klienter och familjer planeras flexibelt utifrån situation och geografiskt avstånd.</p>
+        <a class="tel" href="tel:+46859859530">08&#8209;59&nbsp;85&nbsp;95&nbsp;30</a>
+        <p class="mejl">Gäller det en planerad placering går det bra att mejla <a href="mailto:info@malarfriden.se">info@malarfriden.se</a></p>
+      </div>
+      <footer>
+        <span>Mälarfriden</span>
+        <span>Tillstånd från IVO enligt socialtjänstlagen (2025:400)</span>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var m=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var els=[].slice.call(document.querySelectorAll('.rev'));
+  if(m.matches||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{rootMargin:'0px 0px -10% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+(function(){
+  // Bakgrundsvideon är dekor. Vid prefers-reduced-motion tas den bort helt, så att
+  // stillbilden under blir kvar och inget laddas i onödan.
+  if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var v=document.querySelector('.herovideo');
+  if(v&&v.parentNode){v.pause&&v.pause();v.removeAttribute('autoplay');v.parentNode.removeChild(v);}
+})();
+</script>
+</body>
+</html>

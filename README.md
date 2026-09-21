@@ -1,0 +1,3 @@
+# malarfriden
+
+Statisk webbplats.
