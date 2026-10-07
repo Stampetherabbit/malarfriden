@@ -8,13 +8,15 @@
 <title>Mälarfriden · Skyddat boende</title>
 <style>
 :root{
-  --gräddvit:#F2F0EB; --vit:#FFFFFF;
-  --svart:#141715; --grå:#666E6B; --grå-ljus:#9AA19D;
-  /* --grå mörkad från #6B7370 2026-09-18: gav 4,28:1 mot gräddvitt, under AA,
-     på 69 element. #666E6B ger 4,60 mot gräddvitt och 5,24 mot vitt. */
-  --skog:#1F5F45; --skog-mörk:#164533; --skog-ljus:#E7F0EA;
-  --linje:#E2DFD8;
-  --grå-grön:#5A6861;
+  --gräddvit:#F7F4EE; --vit:#FFFFFF;
+  --svart:#141715; --grå:#5E6662; --grå-ljus:#9AA19D;
+  /* --grå mörkad 2026-09-18 (AA mot gräddvitt) och igen 2026-10-07 när bakgrunden
+     blev ljusare: #5E6662 ger 5,38:1 mot #F7F4EE och 5,16:1 mot --skog-ljus. */
+  /* Grönt ljusare och friskare 2026-10-07 på kundens begäran (var #1F5F45 / #164533).
+     #2F7D59 är det ljusaste gröna som fortfarande bär vit text i AA (5,00:1). */
+  --skog:#2F7D59; --skog-mörk:#256A4A; --skog-ljus:#E6F2E9;
+  --linje:#E5E0D8;
+  --grå-grön:#4F6158;
   --serif:'Instrument Serif','Iowan Old Style',Georgia,serif;
   --sans:system-ui,-apple-system,"Segoe UI Variable","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --r:30px;
@@ -34,12 +36,12 @@ h3{font-size:clamp(20px,1.7vw,26px);letter-spacing:-.02em;line-height:1.15}
 /* accent: sansen anger ämnet, Instrument Serif kursiv bär löftet */
 .lyft{font-family:var(--serif);font-style:italic;font-weight:400;
   font-size:1.04em;letter-spacing:-.005em;padding-right:.04em;color:var(--skog)}
-.avslut .lyft{color:#A9D9BE}
+.avslut .lyft{color:#FBEFD9}
 @supports((-webkit-background-clip:text) or (background-clip:text)){
-  .avslut .lyft{background-image:linear-gradient(96deg,#8FCBAA 0%,#BFE6CF 55%,#E6F6EC 100%)}
+  .avslut .lyft{background-image:linear-gradient(96deg,#F6E3C2 0%,#FBEFD9 55%,#FFF9EE 100%)}
 }
 @supports((-webkit-background-clip:text) or (background-clip:text)){
-  .lyft{background-image:linear-gradient(96deg,var(--skog) 0%,#2E8A62 44%,#55B98B 100%);
+  .lyft{background-image:linear-gradient(96deg,var(--skog) 0%,#3A8B63 50%,#4A9C6E 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 }
 @media print{.lyft{background:none!important;color:var(--skog)!important;-webkit-text-fill-color:currentColor!important}}
@@ -53,12 +55,13 @@ a{color:inherit}
 /* ---- flytande pill-nav ---- */
 .navrad{position:fixed;top:14px;left:0;right:0;z-index:80;display:flex;justify-content:center;padding-inline:var(--pad);pointer-events:none}
 .navpill{pointer-events:auto;width:100%;max-width:1360px;display:flex;align-items:center;gap:18px;
-  background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(18px);
+  background:rgba(255,255,255,.93);backdrop-filter:saturate(160%) blur(18px);
   border:1px solid rgba(255,255,255,.7);border-radius:100px;
   box-shadow:0 1px 2px rgba(20,23,21,.05),0 14px 34px -18px rgba(20,23,21,.22);
   padding:9px 9px 9px 20px}
-.logotyp{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
-.logomärke{width:30px;height:30px;border-radius:9px;background:var(--skog);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800}
+.logotyp{display:flex;align-items:center;text-decoration:none;flex:none}
+/* kundens egen logga, vit bakgrund omräknad till alfa (exakt över vitt) */
+.logotyp img{height:42px;width:auto}
 .navlänkar{display:flex;gap:24px;margin-left:auto;font-size:15px;font-weight:500;color:var(--grå)}
 .navlänkar a{text-decoration:none;transition:color .2s var(--ease)}
 .navlänkar a:hover{color:var(--svart)}
@@ -66,7 +69,7 @@ a{color:inherit}
   font-size:15px;font-weight:700;padding:12px 22px;border-radius:100px;white-space:nowrap;
   transition:background .22s var(--ease),transform .22s var(--ease)}
 .navcta:hover{background:var(--skog-mörk);transform:translateY(-1px)}
-.puls{width:7px;height:7px;border-radius:50%;background:#7FD98F;flex:none;
+.puls{width:7px;height:7px;border-radius:50%;background:#9BE6AA;flex:none;
   box-shadow:0 0 0 3px rgba(127,217,143,.3);animation:pulsa 1.9s var(--ease) infinite}
 @keyframes pulsa{0%,100%{transform:scale(1);box-shadow:0 0 0 3px rgba(127,217,143,.3)}
   50%{transform:scale(1.22);box-shadow:0 0 0 6px rgba(127,217,143,.14)}}
@@ -74,45 +77,36 @@ a{color:inherit}
 @media(max-width:1100px){.navlänkar{display:none}}
 
 /* ---- hero: helbrett medieband, texten ovanpå bildens vänstra del ----
-   Bilden ligger som grundlager och videon ovanpå. Saknas mp4:en målar video-elementet
-   ingenting, och bilden syns igenom. Skärmen är en vågrät gradient som mörkar vänsterkanten
-   så vit text är läsbar oavsett vad som råkar ligga i bilden där. */
-.heromedia{position:relative;background:var(--skog-mörk);overflow:hidden;
-  min-height:clamp(500px,74vh,780px);display:flex;align-items:center}
-.heromedia>img,.heromedia>video{position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:52% 56%;margin:0}
-.heromedia>video{z-index:1;background:transparent}
+   Ljus version 2026-10-07: kundens presentation öppnar med grinden bakom en gräddvit
+   slöja och mörk text. Slöjan är vågrät på bred skärm och lodrät på smal, så texten
+   alltid står på ljus botten oavsett vad som ligger i bilden. */
+.heromedia{position:relative;background:var(--gräddvit);overflow:hidden;
+  min-height:clamp(520px,78vh,800px);display:flex;align-items:center}
+.heromedia>img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:68% 50%;margin:0}
 .heroskärm{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(100deg,
-    rgba(12,20,16,.88) 0%,
-    rgba(12,20,16,.78) 30%,
-    rgba(12,20,16,.44) 54%,
-    rgba(12,20,16,.06) 76%,
-    rgba(12,20,16,0) 100%)}
-.heroinnehåll{position:relative;z-index:3;width:100%;color:#fff;
+    rgba(247,244,238,.97) 0%,
+    rgba(247,244,238,.92) 30%,
+    rgba(247,244,238,.62) 50%,
+    rgba(247,244,238,.14) 70%,
+    rgba(247,244,238,0) 86%)}
+.heroinnehåll{position:relative;z-index:3;width:100%;color:var(--svart);
   padding-block:clamp(112px,15vh,180px) clamp(48px,7vh,84px)}
 .heroblock{max-width:620px}
-.heroinnehåll .ögonbryn{color:rgba(255,255,255,.80)}
-.heroinnehåll h1{margin-top:20px;max-width:none;color:#fff}
+.heroinnehåll h1{margin-top:20px;max-width:none}
 .heroinnehåll h1 .rad{display:block;white-space:nowrap}
-.heroinnehåll h1 span{display:block;color:#F7E6CC}
-.heroinnehåll .lyft{color:#F7E6CC}
-@supports((-webkit-background-clip:text) or (background-clip:text)){
-  .heroinnehåll .lyft{background-image:linear-gradient(96deg,#F2D9B4 0%,#FAECD6 54%,#FFF8EC 100%)}
-}
-.heroinnehåll .text{color:rgba(255,255,255,.88);margin-top:22px;max-width:42ch}
-.heroinnehåll .tel-not{color:rgba(255,255,255,.74)}
-.heroinnehåll .tel{background:var(--skog);color:#fff}
-.heroinnehåll .tel:hover{background:var(--skog-mörk);color:#fff}
-/* smalt: bilden beskärs hårt vågrätt, så skärmen blir lodrät och texten lägger sig nedtill */
+.heroinnehåll h1 .lyft{display:block}
+.heroinnehåll .text{color:#454D49;margin-top:22px;max-width:42ch}
+/* smalt: bilden beskärs hårt vågrätt, så slöjan blir lodrät och texten lägger sig nedtill */
 @media(max-width:860px){
-  .heromedia{align-items:flex-end;min-height:clamp(560px,86vh,760px)}
-  .heromedia>img,.heromedia>video{object-position:40% 54%} /* paret ligger på 35-57% av bredden; 64% kapade bort barnet */
+  .heromedia{align-items:flex-end;min-height:clamp(580px,88vh,780px)}
+  .heromedia>img{object-position:76% 40%} /* grinden ligger på 55–85 % av bredden */
   .heroskärm{background:linear-gradient(to top,
-    rgba(12,20,16,.92) 0%,
-    rgba(12,20,16,.80) 34%,
-    rgba(12,20,16,.44) 62%,
-    rgba(12,20,16,.18) 100%)}
+    rgba(247,244,238,.98) 0%,
+    rgba(247,244,238,.94) 44%,
+    rgba(247,244,238,.55) 64%,
+    rgba(247,244,238,0) 84%)}
   .heroinnehåll{padding-block:clamp(120px,18vh,200px) clamp(36px,6vh,56px)}
 }
 /* faktaremsan under heron */
@@ -199,19 +193,17 @@ a{color:inherit}
 .målavslut{margin:44px auto 0;max-width:40ch;font-size:clamp(19px,1.9vw,24px);font-weight:700;letter-spacing:-.02em;line-height:1.3;text-wrap:balance}
 
 /* ---- avslut ---- */
-.avslut{background:var(--skog-mörk);color:#fff;border-radius:var(--r);padding:clamp(48px,6.5vw,110px);text-align:center;
-  margin-bottom:var(--sekt);box-shadow:0 40px 90px -50px rgba(22,69,51,.8)}
+.avslut{background:var(--skog);color:#fff;border-radius:var(--r);padding:clamp(48px,6.5vw,110px);text-align:center;
+  margin-bottom:var(--sekt);box-shadow:0 40px 90px -56px rgba(47,125,89,.65)}
 .avslut h2{max-width:16ch;margin:16px auto 0}
-.avslut .ögonbryn{color:#A9D9BE}
-.avslut .text{color:rgba(255,255,255,.76);margin:24px auto 0;text-align:center;max-width:52ch;letter-spacing:.002em}
-.avslut .tel{margin-top:32px;background:#33A06F;color:#fff}
-.avslut .tel:hover{background:#3DB57E;color:var(--skog-mörk)}
-.avslut .mejl{color:rgba(255,255,255,.66)}
-.avslut .mejl a{color:#A9D9BE;text-decoration:underline;text-underline-offset:3px;
-  text-decoration-thickness:1px;text-decoration-color:rgba(169,217,190,.5)}
-.avslut .mejl a:hover{text-decoration-color:#A9D9BE}
-.avslut .mejl{margin-top:22px;font-size:16px;color:rgba(255,255,255,.72)}
-.avslut .mejl a{color:#6FE0A6}
+.avslut .ögonbryn{color:#E3F4E9}
+.avslut .text{color:rgba(255,255,255,.92);margin:24px auto 0;text-align:center;max-width:52ch;letter-spacing:.002em}
+.avslut .tel{margin-top:32px;background:#fff;color:var(--skog-mörk)}
+.avslut .tel:hover{background:#F1FAF4;color:var(--skog-mörk)}
+.avslut .mejl{margin-top:22px;font-size:16px;color:rgba(255,255,255,.92)}
+.avslut .mejl a{color:#fff;text-decoration:underline;text-underline-offset:3px;
+  text-decoration-thickness:1px;text-decoration-color:rgba(255,255,255,.6)}
+.avslut .mejl a:hover{text-decoration-color:#fff}
 footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2,32:1 mot gräddvitt, oläsbar för en juridisk uppgift */display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between}
 
 /* ---- motion ---- */
@@ -226,6 +218,7 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
 }
 @media(max-width:479px){
   .navpill{gap:10px;padding:8px 6px 8px 14px}
+  .logotyp img{height:34px}
   .navcta{margin-left:auto}
   .logotyp{font-size:16px;gap:9px}
   .navcta{font-size:14px;padding:11px 16px}
@@ -237,78 +230,74 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
 }
 :focus-visible{outline:2.5px solid var(--skog);outline-offset:3px;border-radius:8px}
 
-/* ═══ SEKTION A · VÅRT STÖD — registret ════════════════════════════════
-   Ersätter .bredkort / .görrutor / .görruta, som kan raderas ur v16.
-   Avdelare är ALLTID border på barnen, aldrig en genomskinlig gap-bakgrund:
-   en grout-bakgrund under 1px gap komponeras mot sidbottnen och blir ljus
-   grout mellan gröna fält (= kakel). Ändra inte till gap.
+/* ═══ SEKTION A · INSATSER OCH STÖD — registret ═══════════════════════
+   2026-10-07: ljus salvia i stället för mörkgrönt, och fyra fält (kundens
+   uppdaterade presentation) i stället för fem. Rutnätet är 1 / 2×2.
+   Avdelare är ALLTID border på barnen, aldrig en genomskinlig gap-bakgrund.
    ══════════════════════════════════════════════════════════════════════ */
-.rg-panel{margin-top:clamp(40px,5vw,68px);background:var(--skog);color:#fff;border-radius:var(--r);
-  padding:clamp(26px,4.2vw,56px);text-align:left;box-shadow:0 40px 80px -48px rgba(22,69,51,.7)}
+.rg-panel{margin-top:clamp(40px,5vw,68px);background:var(--skog-ljus);color:var(--svart);border-radius:var(--r);
+  padding:clamp(26px,4.2vw,56px);text-align:left}
 .rg-rutnät{display:grid;grid-template-columns:minmax(0,1fr);margin:0}
 .rg-fält{min-width:0;display:flex;flex-direction:column}
 .rg-fält dt{margin:0;font-size:clamp(19px,1.5vw,22px);font-weight:800;letter-spacing:-.025em;
-  line-height:1.12;color:#fff;text-wrap:pretty}
-/* kvalificeraren är medvetet gemen och otrackad — den ska inte läsas som ett ögonbryn.
-   .78 är uppmätt till 5,32:1 mot --skog i Chrome. Sänk inte alfat. */
+  line-height:1.12;color:var(--svart);text-wrap:pretty}
 .rg-kval{display:block;margin-top:6px;font-size:14px;font-weight:500;letter-spacing:0;
-  line-height:1.35;text-transform:none;color:rgba(255,255,255,.78)}
+  line-height:1.35;text-transform:none;color:var(--grå-grön)}
 .rg-fält dd{margin:0;display:flex;flex-direction:column;flex:1 1 auto}
 .rg-rader{list-style:none;margin:15px 0 0;padding:0}
-.rg-rader li{border-top:1px solid rgba(255,255,255,.12);padding:9px 0 8px;
-  font-size:15.5px;line-height:1.42;color:rgba(255,255,255,.80)}
+.rg-rader li{border-top:1px solid rgba(47,125,89,.16);padding:9px 0 8px;
+  font-size:15.5px;line-height:1.42;color:#3E4743}
 .rg-rader li:last-child{padding-bottom:0}
 
-/* 320–767: en spalt, fälten avdelade av hårlinjer */
-.rg-fält+.rg-fält{border-top:1px solid rgba(255,255,255,.2);margin-top:26px;padding-top:26px}
+/* smalt: en spalt, fälten avdelade av hårlinjer */
+.rg-fält+.rg-fält{border-top:1px solid rgba(47,125,89,.24);margin-top:26px;padding-top:26px}
 @media(max-width:360px){
   .rg-panel{padding:24px 20px;border-radius:24px}
   .rg-rader li{font-size:15px}
 }
-
-/* OBS: kantlinjerna i de två blocken nedan är hårdkodade mot EXAKT fem fält i
-   ordningen 3+2. Läggs ett sjätte fält till, eller stryks ett, blir rutnätets
-   linjer fel utan att något går sönder synligt. Skriv då om nth-child-reglerna. */
-
-/* 768–1059: två spalter, femte fältet över hela bredden */
-@media(min-width:768px) and (max-width:1059.98px){
+/* 768+: två spalter, två rader */
+@media(min-width:768px){
   .rg-rutnät{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .rg-fält{padding-inline:clamp(20px,3vw,32px)}
+  .rg-fält{padding-inline:clamp(20px,3vw,40px)}
   .rg-fält+.rg-fält{border-top:0;margin-top:0;padding-top:0}
-  .rg-fält:nth-child(5){grid-column:span 2}
-  .rg-fält:nth-child(2n){border-left:1px solid rgba(255,255,255,.2);padding-right:0}
+  .rg-fält:nth-child(2n){border-left:1px solid rgba(47,125,89,.24);padding-right:0}
   .rg-fält:nth-child(2n+1){padding-left:0}
-  .rg-fält:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2);margin-top:30px;padding-top:30px}
-  .rg-fält:nth-child(5){padding-inline:0}
-  .rg-fält:nth-child(5) .rg-rader{max-width:56ch}
-  /* bottenlåsning, bara på understa raden: där bor ojämnheten (1 rad mot 3).
-     Översta raden står kvar toppställd — bottenlåsning där skulle flytta hålet
-     från en kant till mitten av två fält i stället för att ta bort det. */
-  .rg-fält:nth-child(n+4) .rg-rader{margin-top:auto;padding-top:15px}
+  .rg-fält:nth-child(n+3){border-top:1px solid rgba(47,125,89,.24);
+    margin-top:clamp(28px,3vw,42px);padding-top:clamp(28px,3vw,42px)}
 }
-
-/* 1060+: 3+2 på ett sexspaltsraster */
-@media(min-width:1060px){
-  .rg-rutnät{grid-template-columns:repeat(6,minmax(0,1fr))}
-  .rg-fält{padding-inline:clamp(22px,2.4vw,36px)}
-  .rg-fält+.rg-fält{border-top:0;margin-top:0;padding-top:0}
-  .rg-fält:nth-child(-n+3){grid-column:span 2}
-  .rg-fält:nth-child(n+4){grid-column:span 3}
-  .rg-fält:nth-child(2),.rg-fält:nth-child(3),.rg-fält:nth-child(5){
-    border-left:1px solid rgba(255,255,255,.2)}
-  .rg-fält:nth-child(1),.rg-fält:nth-child(4){padding-left:0}
-  .rg-fält:nth-child(3),.rg-fält:nth-child(5){padding-right:0}
-  .rg-fält:nth-child(n+4){border-top:1px solid rgba(255,255,255,.2);
-    margin-top:clamp(32px,3vw,46px);padding-top:clamp(32px,3vw,46px)}
-  .rg-fält:nth-child(n+4) .rg-rader{max-width:46ch;margin-top:auto;padding-top:15px}
-}
-
-/* 1440+: samma struktur, mer luft och ett hack större typ */
 @media(min-width:1440px){
   .rg-panel{padding:64px 68px}
   .rg-fält dt{font-size:23px}
   .rg-rader li{font-size:16px;padding:10px 0 9px}
 }
+
+/* ═══ SEKTIONSHUVUD MED BILD — text och bildkort sida vid sida ════════
+   Används där kunden lagt en bild per avsnitt i presentationen (stöd, säkerhet,
+   mål). Stående bilder får ett eget, högre format. */
+.sekthuvud{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,80px);align-items:center;text-align:left}
+.sekthuvud.vänd{grid-template-columns:.95fr 1.05fr}
+.sekthuvud.vänd .bildkort{order:-1}
+.sekthuvud h2{max-width:16ch}
+.sekthuvud .text{margin-top:22px}
+.bildkort.stående{aspect-ratio:4/4.4}
+@media(max-width:920px){
+  .sekthuvud,.sekthuvud.vänd{grid-template-columns:1fr}
+  .sekthuvud.vänd .bildkort{order:0}
+  .bildkort.stående{aspect-ratio:4/3.4}
+}
+
+/* kompetens: kundens flätade band som list överst i panelen */
+.panel.medband{overflow:hidden;--pp:clamp(38px,5vw,72px);padding:var(--pp)}
+.panel.medband .band{display:block;width:calc(100% + 2*var(--pp));max-width:none;
+  margin:calc(-1*var(--pp)) calc(-1*var(--pp)) clamp(30px,4vw,54px);
+  height:clamp(110px,13vw,190px);object-fit:cover;object-position:70% 50%}
+
+/* vårt mål: målen som rader bredvid bilden */
+.mållista{list-style:none;margin:30px 0 0;padding:0}
+.mållista li{display:grid;grid-template-columns:auto 1fr;gap:16px;border-top:1px solid var(--linje);padding:18px 0}
+.mållista .nr{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--skog);padding-top:4px}
+.mållista p{font-size:16.5px;color:var(--grå);line-height:1.55}
+.mållista b{color:var(--svart);font-weight:700}
 
 /* ═══ SEKTION B · SKYDDET LIGGER I TRE LAGER — samma register, vitt ════
    Ersätter .lagergrid / .lager / .lagerikon / .lagertext / .lagerlista,
@@ -370,10 +359,10 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
 
 <div class="navrad">
   <nav class="navpill" aria-label="Huvudmeny">
-    <a class="logotyp" href="#topp"><span class="logomärke">M</span><span class="ordmärke">Mälarfriden</span></a>
+    <a class="logotyp" href="#topp"><img src="bilder/logo.png" width="504" height="136" alt="Mälarfriden, skyddat boende"></a>
     <div class="navlänkar">
-      <a href="#målgrupp">Målgrupp</a>
-      <a href="#stöd">Vårt stöd</a>
+      <a href="#om">Om oss</a>
+      <a href="#stöd">Insatser och stöd</a>
       <a href="#boendemiljö">Boendemiljö</a>
       <a href="#kompetens">Kompetens</a>
       <a href="#säkerhet">Säkerhet</a>
@@ -385,19 +374,16 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
 <main id="topp">
 
   <section class="heromedia">
-    <!-- Stillbilden är grundlager OCH fallback. Videon ligger ovanpå; saknas eller stoppas
-         mp4:en målar video-elementet ingenting och bilden syns igenom. Scriptet längst ned
-         plockar bort videon helt vid prefers-reduced-motion. -->
-    <img src="bilder/hero-mor-dotter-hand.webp" alt="Stämningsbild: en kvinna och ett barn går hand i hand på en grusväg genom ett höstlandskap, sedda bakifrån.">
+    <img src="bilder/hero-grind.webp" alt="Stämningsbild: en öppen vit grind och en grusgång genom en rosenträdgård, med sjön i bakgrunden.">
     <div class="heroskärm"></div>
     <div class="heroinnehåll">
       <div class="wrap">
         <div class="heroblock">
           <p class="ögonbryn">Södermanlands län · placeringar i hela landet</p>
           <h1><span class="rad">Skyddat boende</span><span class="lyft">sedan 2014.</span></h1>
-          <p class="text">Vi tar emot kvinnor och mammor med medföljande barn som är utsatta för våld i nära relationer eller hedersrelaterat våld och förtryck.</p>
+          <p class="text">Vi tar emot kvinnor från 18 år, med eller utan medföljande barn, som behöver skydd och stöd vid våld i nära relationer och hedersrelaterat våld och förtryck.</p>
           <div class="knapprad">
-            <a class="tel" href="tel:+46859859530"><span class="puls"></span>08&#8209;59&nbsp;85&nbsp;95&nbsp;30</a>
+            <a class="tel" href="tel:+46859859530"><span class="puls"></span>08&#8209;598&nbsp;595&nbsp;30</a>
             <span class="tel-not">Vi svarar dygnet runt</span>
           </div>
         </div>
@@ -407,35 +393,39 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
 
   <section class="faktaremsa" aria-label="Kort om Mälarfriden">
     <div class="karusell">
-      <ul><li><b>IVO-tillstånd</b>&nbsp;för skyddat boende</li><li><b>Placeringar</b>&nbsp;från socialtjänst och polis i hela landet</li><li><b>Nio språk</b>&nbsp;i arbetsteamet</li><li><b>Medföljande husdjur</b>&nbsp;välkomna</li><li><b>Jour</b>&nbsp;hela kvällen och natten</li><li><b>Enskilt sovrum</b>&nbsp;för varje familj</li><li><b>Hämtning</b>&nbsp;planeras flexibelt efter avstånd</li></ul>
-      <ul aria-hidden="true"><li><b>IVO-tillstånd</b>&nbsp;för skyddat boende</li><li><b>Placeringar</b>&nbsp;från socialtjänst och polis i hela landet</li><li><b>Nio språk</b>&nbsp;i arbetsteamet</li><li><b>Medföljande husdjur</b>&nbsp;välkomna</li><li><b>Jour</b>&nbsp;hela kvällen och natten</li><li><b>Enskilt sovrum</b>&nbsp;för varje familj</li><li><b>Hämtning</b>&nbsp;planeras flexibelt efter avstånd</li></ul>
+      <ul><li><b>IVO-tillstånd</b>&nbsp;för skyddat boende</li><li><b>Akuta och planerade</b>&nbsp;placeringar i hela landet</li><li><b>Nio språk</b>&nbsp;i personalgruppen</li><li><b>Medföljande husdjur</b>&nbsp;välkomna</li><li><b>Jour</b>&nbsp;kväll och natt</li><li><b>Upp till 21 platser</b>&nbsp;på två våningar</li><li><b>Hämtning</b>&nbsp;planeras efter situation och avstånd</li></ul>
+      <ul aria-hidden="true"><li><b>IVO-tillstånd</b>&nbsp;för skyddat boende</li><li><b>Akuta och planerade</b>&nbsp;placeringar i hela landet</li><li><b>Nio språk</b>&nbsp;i personalgruppen</li><li><b>Medföljande husdjur</b>&nbsp;välkomna</li><li><b>Jour</b>&nbsp;kväll och natt</li><li><b>Upp till 21 platser</b>&nbsp;på två våningar</li><li><b>Hämtning</b>&nbsp;planeras efter situation och avstånd</li></ul>
     </div>
   </section>
 
-  <section class="rev" id="målgrupp" style="padding-top:var(--sekt);padding-bottom:var(--sekt)">
+  <section class="rev" id="om" style="padding-top:var(--sekt);padding-bottom:var(--sekt)">
     <div class="wrap delad">
-      <div class="bildkort foto"><img src="bilder/malgrupp-grind.webp" alt="Stämningsbild: en öppen vit grind och en grusgång genom en rosenträdgård en mulen sommardag, med sjön i bakgrunden."></div>
+      <div class="bildkort foto"><img src="bilder/om-vardagsrum-husdjur.webp" alt="Stämningsbild: en hund och två katter vilar på en matta framför en soffa i ett ljust vardagsrum."></div>
       <div>
-        <p class="ögonbryn">Målgrupp</p>
-        <h2 style="margin-top:18px">Vilka vi <em class="lyft">tar emot</em>.</h2>
-        <p class="text" style="margin-top:24px">Mälarfriden grundades 2014 och är ett skyddat boende för kvinnor och mammor med barn som behöver skydd, stöd och en trygg plats efter våld eller hot i nära relationer.</p>
+        <p class="ögonbryn">Om Mälarfriden</p>
+        <h2 style="margin-top:18px">Trygghet och stöd på <em class="lyft">vägen vidare</em>.</h2>
+        <p class="text" style="margin-top:24px">Mälarfriden grundades 2014 och har tillstånd från IVO att bedriva skyddat boende. Vi tar emot kvinnor från 18 år, med eller utan medföljande barn, som behöver skydd och stöd.</p>
         <ul class="bockar">
-          <li><span class="bock">✓</span><span><b>Hedersrelaterat våld och förtryck.</b> Gedigen erfarenhet, med individuellt anpassat stöd till kvinnor i dessa situationer.</span></li>
-          <li><span class="bock">✓</span><span><b>Placeringar i hela landet</b> från socialtjänster och polis.</span></li>
-          <li><span class="bock">✓</span><span><b>Medföljande husdjur är självklart välkomna.</b> Stall med hagar och hundgård finns på gården.</span></li>
+          <li><span class="bock">✓</span><span><b>Lång erfarenhet</b> av stöd vid våld i nära relationer och hedersrelaterat våld och förtryck. Stödet utgår från varje kvinnas och varje barns behov.</span></li>
+          <li><span class="bock">✓</span><span><b>Akuta och planerade placeringar</b> från socialtjänster och socialjourer i hela landet.</span></li>
+          <li><span class="bock">✓</span><span><b>Medföljande husdjur är välkomna.</b></span></li>
           <li><span class="bock">✓</span><span><b>Enskilt sovrum</b> i kollektivt boende med gemensamma utrymmen.</span></li>
-          <li><span class="bock">✓</span><span><b>Större familjer</b> kan få den övre våningen anpassad till en separat lägenhet med egen ingång.</span></li>
           <li><span class="bock">✓</span><span>Vi tar <b>inte</b> emot personer med aktivt missbruk.</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="rev mitt" id="stöd" style="padding-bottom:var(--sekt)">
+  <section class="rev" id="stöd" style="padding-bottom:var(--sekt)">
     <div class="wrap">
-      <p class="ögonbryn">Vårt stöd</p>
-      <p class="citat">”När vårdplanerna kommer har vi <i>ofta gjort det mesta</i>”</p>
-      <p class="text text-c" style="margin-top:26px">Vi samordnar hela skyddsprocessen, så att handläggningen hos er blir kortare och tryggare.</p>
+      <div class="sekthuvud">
+        <div>
+          <p class="ögonbryn">Insatser och stöd</p>
+          <h2 style="margin-top:18px">Vi samordnar skyddet och <em class="lyft">vägen vidare</em>.</h2>
+          <p class="text">Skyddsprocessen, juridiken, skolan och nästa steg mot eget boende och studier.</p>
+        </div>
+        <div class="bildkort foto stående"><img src="bilder/stod-skolstart.webp" alt="Stämningsbild: två kvinnor och en flicka med ryggsäck tittar i en pärm tillsammans utomhus, sedda bakifrån."></div>
+      </div>
 
       <div class="rg-panel">
         <dl class="rg-rutnät">
@@ -444,28 +434,16 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
             <dt>Skyddsprocessen<span class="rg-kval">vi samordnar den</span></dt>
             <dd>
               <ul class="rg-rader">
-                <li>Riskbedömningar</li>
-                <li>Hotanalyser</li>
-                <li>Polisanmälningar</li>
-                <li>Ansökningar om skyddade personuppgifter</li>
-                <li>Säkra transporter till myndigheter, möten och skolor</li>
+                <li>Hot- och riskbedömningar</li>
+                <li>Individuell säkerhetsplanering</li>
+                <li>Stöd vid ansökan om skyddade personuppgifter</li>
+                <li>Säkra transporter</li>
               </ul>
             </dd>
           </div>
 
           <div class="rg-fält">
-            <dt>Myndigheter<span class="rg-kval">stöd i kontakterna med</span></dt>
-            <dd>
-              <ul class="rg-rader">
-                <li>Socialtjänst och andra myndigheter</li>
-                <li>Hälso- och sjukvård</li>
-                <li>Skola och förskola</li>
-              </ul>
-            </dd>
-          </div>
-
-          <div class="rg-fält">
-            <dt>Juridik<span class="rg-kval">advokatbyråer som gör hembesök, för allas säkerhet och trygghet</span></dt>
+            <dt>Juridiskt stöd<span class="rg-kval">samarbete med advokatbyråer inom</span></dt>
             <dd>
               <ul class="rg-rader">
                 <li>Familjerätt</li>
@@ -476,21 +454,21 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
           </div>
 
           <div class="rg-fält">
-            <dt>Eget boende<span class="rg-kval">nära samarbete med hyresvärdar</span></dt>
+            <dt>Skola och förskola<span class="rg-kval">goda kontakter med skolor och förskolor</span></dt>
             <dd>
               <ul class="rg-rader">
-                <li>Goda möjligheter att ordna trygga bostadslösningar för kvinnor och familjer</li>
+                <li>Vi hjälper till att ordna plats vid behov</li>
+                <li>Inför starten gör vi en individuell säkerhetsplanering tillsammans med berörd skol- eller förskolepersonal</li>
               </ul>
             </dd>
           </div>
 
           <div class="rg-fält">
-            <dt>Skola och studier<span class="rg-kval">kontakter i kommunen</span></dt>
+            <dt>Boende och studier<span class="rg-kval">vägen vidare efter vistelsen</span></dt>
             <dd>
               <ul class="rg-rader">
-                <li>Skolor och förskolor i kommunen, platser kan ordnas vid behov</li>
-                <li>Samarbete med SFI och Komvux</li>
-                <li>Stöd i språkundervisning och vidare studier</li>
+                <li>Samarbete med hyresvärdar om trygga bostadslösningar</li>
+                <li>Kontakter med SFI och Komvux, vidare till språkundervisning och studier</li>
               </ul>
             </dd>
           </div>
@@ -504,26 +482,25 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
     <div class="wrap">
       <div class="panel">
         <p class="ögonbryn">Boendemiljö</p>
-        <h2 style="margin-top:18px;max-width:20ch">Huset och <em class="lyft">gården</em>.</h2>
-        <p class="text" style="margin-top:22px">Mälarfriden består av ett tvåvåningshus med en avkopplande relaxavdelning med bastu. TV och internet finns tillgängligt i boendet.</p>
+        <h2 style="margin-top:18px;max-width:20ch">Ett rymligt <em class="lyft">boende</em>.</h2>
+        <p class="text" style="margin-top:22px">Huset har upp till 21 platser fördelade på två våningar, och en rymlig bastu med relaxrum. De boende har tillgång till TV och internet.</p>
         <div class="faktarutor">
           <div class="faktaruta"><div class="n">7</div><div class="t">sovrum</div></div>
-          <div class="faktaruta"><div class="n">2</div><div class="t">stora kök</div></div>
+          <div class="faktaruta"><div class="n">2</div><div class="t">kök</div></div>
           <div class="faktaruta"><div class="n">2</div><div class="t">vardagsrum</div></div>
           <div class="faktaruta"><div class="n">3</div><div class="t">badrum</div></div>
         </div>
+        <p class="text" style="margin-top:28px;max-width:60ch"><b style="color:var(--svart)">Plats för större familjer.</b> Övervåningen kan vid behov bli en avskild boendedel med egen ingång.</p>
       </div>
       <div class="delad vänd" style="margin-top:clamp(28px,4vw,56px)">
-        <div class="bildkort foto"><img src="bilder/husdjur-hund-katt.webp" alt="Stämningsbild: en katt och en hund vilar tillsammans på en trätrall i en trädgård med lavendel."></div>
+        <div class="bildkort foto"><img src="bilder/boendemiljo-lekplats.webp" style="object-position:74% 50%" alt="Stämningsbild: en gunga och en sandlåda med leksaker på en grusad gård, med ängar och skog bakom."></div>
         <div>
-          <h3>Omgivningen</h3>
-          <p class="text" style="margin-top:16px">Mälarfriden är omgivet av fridfull natur och erbjuder en mängd möjligheter till rekreation och återhämtning.</p>
+          <h3>Skog och utemiljö</h3>
+          <p class="text" style="margin-top:16px">Skogen ligger intill boendet och ger möjlighet till promenader, svamp- och bärplockning och lugna stunder ute.</p>
           <ul class="bockar">
-            <li><span class="bock">✓</span><span>Skogspromenader, trädgårdsskötsel samt svamp- och bärplockning.</span></li>
-            <li><span class="bock">✓</span><span><b>Stor lekplats på gården</b> med sandlåda, gungor, klätterställning och studsmatta.</span></li>
-            <li><span class="bock">✓</span><span><b>Litet stall med hagar och en rymlig hundgård</b>, så att placeringar där husdjur följer med går att ta emot.</span></li>
-            <li><span class="bock">✓</span><span>Regelbundna utflykter och aktiviteter, planerade tillsammans med de boende.</span></li>
-            <li><span class="bock">✓</span><span>Samarbete med ett <b>närliggande gym</b>, där alla som vill får möjlighet att träna.</span></li>
+            <li><span class="bock">✓</span><span>På tomten finns <b>lekplats, hundgård, ett mindre stall och hagar</b>.</span></li>
+            <li><span class="bock">✓</span><span>Vi planerar <b>utflykter och aktiviteter</b> tillsammans med de boende.</span></li>
+            <li><span class="bock">✓</span><span>Ett <b>närliggande gym</b> finns för den som vill träna.</span></li>
           </ul>
         </div>
       </div>
@@ -532,21 +509,21 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
 
   <section class="rev" id="kompetens" style="padding-bottom:var(--sekt)">
     <div class="wrap">
-      <div class="panel">
-        <p class="ögonbryn">Kompetens</p>
-        <h2 style="margin-top:18px;max-width:18ch">Kompetensen i vårt <em class="lyft">arbetsteam</em>.</h2>
-        <p class="text" style="margin-top:22px">Föreståndaren har formell behörighet enligt tillståndet. Kompetensen redovisas som titlar, inte som personer.</p>
+      <div class="panel medband">
+        <img class="band" src="bilder/kompetens-band.webp" alt="" aria-hidden="true">
+        <p class="ögonbryn">Vår personal och kompetens</p>
+        <h2 style="margin-top:18px;max-width:18ch">Erfarenhet, metoder och språk i vårt <em class="lyft">stödarbete</em>.</h2>
         <div class="kompgrid">
-          <div class="kompkort"><p class="ögonbryn">Utbildningar</p><p><b>Socionomer, leg. hälso- och sjukvårdskurator och specialistsjuksköterska inom psykiatrin.</b> Lärare för grundskola och gymnasieskola, KBT-psykoterapi, MI-samtal, undersköterska och lärarassistent.</p></div>
-          <div class="kompkort"><p class="ögonbryn">Riskbedömning</p><p><b>FREDA-beskrivning, SARA och PATRIARK.</b> SARA för våld i nära relationer, PATRIARK för hedersrelaterat våld.</p></div>
-          <div class="kompkort"><p class="ögonbryn">Stöd under placeringen</p><p><b>Stöd- och säkerhetssamtal</b> och individuell säkerhetsplanering. Kris- och återhämtningsstöd samt individuellt anpassat stöd i föräldraskapet.</p></div>
-          <div class="kompkort"><p class="ögonbryn">Stöd för barnen</p><p><b>BBIC, Barns behov i centrum.</b> Samtal med barn som bevittnat våld, och Trappan-samtal.</p></div>
+          <div class="kompkort"><p class="ögonbryn">Personalens kompetens</p><p>I personalgruppen finns <b>socionomer, kurator, specialistsjuksköterska inom psykiatri, lärare och undersköterska.</b></p></div>
+          <div class="kompkort"><p class="ögonbryn">Samtal och stöd</p><p><b>Stöd- och säkerhetssamtal</b>, krisstöd, kuratorsstöd, familjebehandling, KBT-baserat stöd, motiverande samtal enligt MI och föräldrastöd.</p></div>
+          <div class="kompkort"><p class="ögonbryn">Hot- och riskbedömningar</p><p>Vi använder <b>FREDA, SARA-V3 och PATRIARK-V2</b> vid hot- och riskbedömningar.</p></div>
+          <div class="kompkort"><p class="ögonbryn">Barnperspektiv</p><p><b>Barnperspektivet är alltid i fokus.</b> Vi använder BBIC och Trappansamtal i arbetet med barn.</p></div>
         </div>
         <div class="språkblock">
-          <p class="ögonbryn">Språk i huset</p>
+          <p class="ögonbryn">Språk</p>
           <p class="språktal">Nio språk</p>
           <div class="märken">
-            <span>Svenska</span><span>Engelska</span><span>Finska</span><span>Polska</span><span>Grekiska</span><span>Arabiska</span><span>Kinesiska</span><span>Pashto</span><span>Urdu</span>
+            <span>Svenska</span><span>Engelska</span><span>Arabiska</span><span>Polska</span><span>Pashto</span><span>Urdu</span><span>Kinesiska</span><span>Finska</span><span>Grekiska</span>
           </div>
           <p class="text" style="margin-top:20px">Tolk bokas alltid vid behov.</p>
         </div>
@@ -554,28 +531,33 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
     </div>
   </section>
 
-  <section class="rev mitt" id="säkerhet" style="padding-bottom:var(--sekt)">
+  <section class="rev" id="säkerhet" style="padding-bottom:var(--sekt)">
     <div class="wrap">
-      <p class="ögonbryn">Säkerhet och trygghet</p>
-      <h2 style="margin-top:18px">Skyddet ligger i <em class="lyft">tre lager</em>.</h2>
-      <p class="text text-c">Skyddet är ordnat i tre lager: bemanningen, huset och personen.</p>
+      <div class="sekthuvud vänd">
+        <div class="bildkort foto stående"><img src="bilder/sakerhet-gardin.webp" alt="Stämningsbild: solljus genom en ljus linnegardin, med skuggor av blad på väggen."></div>
+        <div>
+          <p class="ögonbryn">Säkerhet och trygghet</p>
+          <h2 style="margin-top:18px">Skyddet ligger i <em class="lyft">tre lager</em>.</h2>
+          <p class="text">Bemanningen, huset och den individuella säkerheten för varje person.</p>
+        </div>
+      </div>
 
       <div class="lg-tavla">
 
         <div class="lg-lager">
-          <h3>Bemanningen<span class="lg-kval">Dag på plats, natt i jour.</span></h3>
+          <h3>Bemanningen<span class="lg-kval">Dag på plats, kväll och natt i jour.</span></h3>
           <dl class="lg-fakta">
             <div class="lg-rad">
               <dt>Dagtid</dt>
-              <dd>Personal på plats i huset varje dag <span class="lg-tal">08.00–17.00</span>.</dd>
+              <dd>Personal finns på plats i huset varje dag <span class="lg-tal">08.00–17.00</span>.</dd>
             </div>
             <div class="lg-rad">
               <dt>Kväll och natt</dt>
-              <dd>Jourpersonal hela kvällen och natten, i direkt anslutning till boendet.</dd>
+              <dd>Jourpersonal finns i direkt anslutning till boendet under kväll och natt och nås via telefon.</dd>
             </div>
             <div class="lg-rad">
-              <dt>Ny placering</dt>
-              <dd>Rutinen är sovande personal på plats de första <span class="lg-tal">två till tre</span> nätterna. Därefter gäller ordinarie jour i direkt anslutning till boendet.</dd>
+              <dt>Vid ny placering</dt>
+              <dd>Personal sover på plats de första <span class="lg-tal">två till tre</span> nätterna. Därefter gäller ordinarie jour. Vid skyddsnivå 3 finns nattpersonal på plats. Övrig nattbemanning anpassas efter skyddsbehov.</dd>
             </div>
             <div class="lg-rad">
               <dt>Inställelsetid</dt>
@@ -585,11 +567,11 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
         </div>
 
         <div class="lg-lager">
-          <h3>Huset<span class="lg-kval">Larm och avtal som gäller lokalerna, oavsett vem som är i tjänst.</span></h3>
+          <h3>Huset<span class="lg-kval">Larm och skydd som gäller lokalerna.</span></h3>
           <dl class="lg-fakta">
             <div class="lg-rad">
               <dt>Larm</dt>
-              <dd>Polis- och Securitaslarm installerat i lokalerna.</dd>
+              <dd>Polis- och Securitaslarm.</dd>
             </div>
             <div class="lg-rad">
               <dt>Kamera</dt>
@@ -597,21 +579,25 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
             </div>
             <div class="lg-rad">
               <dt>Brand</dt>
-              <dd>Brandskyddsavtal.</dd>
+              <dd>Brandskyddsarbete.</dd>
             </div>
           </dl>
         </div>
 
         <div class="lg-lager">
-          <h3>Personen<span class="lg-kval">Skydd som följer med individen, inne som ute.</span></h3>
+          <h3>Personen<span class="lg-kval">Skydd som utgår från och följer med individen.</span></h3>
           <dl class="lg-fakta">
             <div class="lg-rad">
-              <dt>Personlarm</dt>
-              <dd>Bärbara överfallslarm för personal och boende.</dd>
+              <dt>Säkerhetsplan</dt>
+              <dd>Individuell säkerhetsplan.</dd>
             </div>
             <div class="lg-rad">
-              <dt>Ute och transport</dt>
-              <dd>GPS-larm vid utevistelser och transporter.</dd>
+              <dt>Personlarm</dt>
+              <dd>Bärbara överfallslarm.</dd>
+            </div>
+            <div class="lg-rad">
+              <dt>Transporter</dt>
+              <dd>GPS-larm vid transporter.</dd>
             </div>
           </dl>
         </div>
@@ -620,27 +606,30 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
     </div>
   </section>
 
-  <section class="rev mitt" id="mål" style="padding-bottom:var(--sekt)">
-    <div class="wrap">
-      <p class="ögonbryn">Vårt mål</p>
-      <h2 style="margin-top:18px">En väg vidare mot ett <em class="lyft">självständigt liv</em>.</h2>
-      <p class="text text-c">Verksamheten har en pedagogisk och praktisk inriktning som ger varje individ stöd i att skapa struktur, självständighet och trygghet i vardagen. Målet är att varje kvinna och familj ska kunna bygga upp ett stabilt och fungerande liv med fokus på trygghet, delaktighet och självbestämmande.</p>
-      <div class="målrutor">
-        <div class="målruta"><div class="nr">01</div><p>Motivera och vägleda i arbetssökandet eller studier, för att uppnå självförsörjning.</p></div>
-        <div class="målruta"><div class="nr">02</div><p>Stötta varje enskild person i förberedelserna inför övergången till ett eget boende.</p></div>
-        <div class="målruta"><div class="nr">03</div><p>Säkerställa att barnen under sin vistelse hos oss får en trygg och lugn miljö, och att deras individuella behov tillgodoses.</p></div>
+  <section class="rev" id="mål" style="padding-bottom:var(--sekt)">
+    <div class="wrap delad">
+      <div class="bildkort foto stående"><img src="bilder/mal-stig.webp" alt="Stämningsbild: en stig genom gräs och björkar i morgonljus."></div>
+      <div>
+        <p class="ögonbryn">Vårt mål</p>
+        <h2 style="margin-top:18px">En väg vidare mot ett <em class="lyft">självständigt liv</em>.</h2>
+        <p class="text" style="margin-top:24px">Vi erbjuder pedagogiskt och praktiskt stöd som hjälper kvinnor och familjer att skapa struktur, trygghet och självständighet i vardagen. Arbetet utgår från varje persons situation och stärker delaktighet, egna beslut och tilltron till den egna förmågan.</p>
+        <ul class="mållista">
+          <li><span class="nr">01</span><p><b>Barnen.</b> Under vistelsen arbetar vi för att barnen ska få lugn, fungerande skolgång och stöd utifrån sina individuella behov.</p></li>
+          <li><span class="nr">02</span><p><b>Studier och arbete.</b> Tillsammans med kvinnan planerar vi nästa steg mot studier eller arbete och möjlighet till självförsörjning.</p></li>
+          <li><span class="nr">03</span><p><b>Eget boende.</b> En trygg övergång till ett eget boende.</p></li>
+        </ul>
+        <p class="målavslut" style="margin:28px 0 0;text-align:left">Vårt mål är att varje kvinna och barn ska få möjlighet att bygga ett stabilt liv med trygghet, självbestämmande och god livskvalitet.</p>
       </div>
-      <p class="målavslut">Vår målsättning är att ge varje kvinna och barn möjlighet till ett bra liv präglat av trygghet, självständighet och god livskvalitet.</p>
     </div>
   </section>
 
   <section class="rev">
     <div class="wrap">
       <div class="avslut">
-        <p class="ögonbryn">Placeringsförfrågan</p>
+        <p class="ögonbryn">Platsförfrågan</p>
         <h2>Ring oss. Vi svarar <em class="lyft">dygnet runt</em>.</h2>
-        <p class="text">Mälarfriden finns i Södermanlands län, i en trygg och avskild miljö. Hämtning av klienter och familjer planeras flexibelt utifrån situation och geografiskt avstånd.</p>
-        <a class="tel" href="tel:+46859859530">08&#8209;59&nbsp;85&nbsp;95&nbsp;30</a>
+        <p class="text">Akuta och planerade förfrågningar från socialtjänster och socialjourer i hela landet. Skyddat boende i Södermanlands län. Hämtning kan planeras utifrån situation och avstånd.</p>
+        <a class="tel" href="tel:+46859859530">08&#8209;598&nbsp;595&nbsp;30</a>
         <p class="mejl">Gäller det en planerad placering går det bra att mejla <a href="mailto:info@malarfriden.se">info@malarfriden.se</a></p>
       </div>
       <footer>
