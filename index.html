@@ -200,6 +200,10 @@ a{color:inherit}
 .avslut .text{color:rgba(255,255,255,.92);margin:24px auto 0;text-align:center;max-width:52ch;letter-spacing:.002em}
 .avslut .tel{margin-top:32px;background:#fff;color:var(--skog-mörk)}
 .avslut .tel:hover{background:#F1FAF4;color:var(--skog-mörk)}
+/* den ljusa pulsen syns inte mot vit knapp: samma puls, mättare grön */
+.puls-mörk{background:#3DB57E;box-shadow:0 0 0 3px rgba(61,181,126,.28);animation-name:pulsa-mörk}
+@keyframes pulsa-mörk{0%,100%{transform:scale(1);box-shadow:0 0 0 3px rgba(61,181,126,.28)}
+  50%{transform:scale(1.22);box-shadow:0 0 0 6px rgba(61,181,126,.12)}}
 .avslut .mejl{margin-top:22px;font-size:16px;color:rgba(255,255,255,.92)}
 .avslut .mejl a{color:#fff;text-decoration:underline;text-underline-offset:3px;
   text-decoration-thickness:1px;text-decoration-color:rgba(255,255,255,.6)}
@@ -629,7 +633,7 @@ footer{padding:0 0 56px;font-size:13.5px;color:var(--grå);/* var --grå-ljus: 2
         <p class="ögonbryn">Platsförfrågan</p>
         <h2>Ring oss. Vi svarar <em class="lyft">dygnet runt</em>.</h2>
         <p class="text">Akuta och planerade förfrågningar från socialtjänster och socialjourer i hela landet. Skyddat boende i Södermanlands län. Hämtning kan planeras utifrån situation och avstånd.</p>
-        <a class="tel" href="tel:+46859859530">08&#8209;598&nbsp;595&nbsp;30</a>
+        <a class="tel" href="tel:+46859859530"><span class="puls puls-mörk"></span>08&#8209;598&nbsp;595&nbsp;30</a>
         <p class="mejl">Gäller det en planerad placering går det bra att mejla <a href="mailto:info@malarfriden.se">info@malarfriden.se</a></p>
       </div>
       <footer>
